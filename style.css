@@ -6,7 +6,9 @@
     --font-color-black: rgb(21, 20, 20);
     --font-color-opaque: rgba(57, 51, 51, 0.866);
 }
-
+html {
+     scroll-behavior: smooth; 
+}
 body {
     margin: 0;
     padding: 0;
@@ -25,15 +27,15 @@ main {
 
 .overlay:before {
     content: "";
-    background: linear-gradient(280deg, rgb(104, 155, 214)1%, rgb(131, 222, 255)80%);
+    background: linear-gradient(280deg, rgb(104, 155, 214)1%,rgb(25, 171, 224)50% , rgb(131, 222, 255)80%);
     width: 100%;
     height: 30%;
     position: absolute;
     z-index: -1;
-    top: -30px;
+    top: -40px;
     left: 0;
     transform: skewY(-3deg);
-
+    box-shadow: 0 2px 10px rgb(105, 155, 214);
 }
 
 .header {
@@ -59,7 +61,7 @@ main {
     object-fit: cover;
     border-radius: 80%; 
     box-shadow: 2px 2px 4px rgb(117, 205, 237);
-     position: relative;
+    position: relative;
     right: 0;
 }
 
@@ -121,11 +123,17 @@ main {
 .projects {
     display: flex;
     flex-direction: column;
-    align-items: first center;
+    align-items: center;
     justify-content: center;
-    margin-top: 20px;
-    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: 40px auto;
+    gap: 20px; 
+    animation: slideUp 1s ease-in-out forwards;
+    opacity: 0;
+    max-width: 100%;
 }
+
 
 .projects h3 {
     font-family: var(--font-family-roboto);
@@ -133,11 +141,10 @@ main {
     font-weight: bold;
     position: relative;
     top: 40px;
-
 }
 
 .projects-container {  
-    max-width: 70%;
+    max-width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,7 +159,7 @@ main {
     flex-direction: column;
     align-items: baseline;
     justify-content: center;
-    width: 260px;
+    max-width: 260px;
     border-radius: 8px;
     gap: 10px;
 }
@@ -167,10 +174,11 @@ main {
     justify-content: center;
     font-size: larger;
     font-weight: bolder;
+    color: whitesmoke;
 }
 
 .red {
-    background-color: red;
+    background-color: rgb(116, 0, 0);
 }
 
 .gray {
@@ -178,7 +186,7 @@ main {
 }   
 
 .blue {
-    background-color: blue;
+    background-color: rgb(1, 1, 145);
 }
 
 .green {
@@ -186,7 +194,7 @@ main {
 }   
 
 .yellow {
-    background-color: yellow;
+    background-color: rgb(150, 150, 3);
 }
 
 .purple {
@@ -253,7 +261,7 @@ main {
 
 @keyframes slideIn {
     0% {
-      transform: translateX(100%);
+      transform: translateX(-100%);
       opacity: 0;
     }
     100% {
@@ -262,7 +270,21 @@ main {
     }
 }
 
-@media screen and (max-width: 768px) {
+@keyframes slideUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
     .header {
         flex-wrap: wrap;
     }
